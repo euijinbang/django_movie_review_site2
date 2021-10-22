@@ -1,6 +1,6 @@
 
 
-<video src="/Users/euijinpang/movies2.mov"></video>
+<video src="movies_no_audio.mov"></video>
 
 > python venv/bin/activate
 > pip install -r requirements.txt
