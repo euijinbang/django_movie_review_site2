@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load bootstrap5 %}
+
+{% block body %}
+
+<h1>🐹 {{ profile_user.username }}'s profile</h1>
+<div class="d-flex align-items-center">
+<p style="margin:3.5rem; margin-left:0;">팔로워: {{ profile_user.followers.all|length }} | 팔로우: {{ profile_user.followings.all|length }} </p>
+<form action="{% url 'accounts:follow' profile_user.pk %}" method="POST">
+  {% csrf_token %}
+  {% if user in profile_user.followers.all %}
+    <input type="submit" value="unfollow"s tyle="margin:2rem 0;" class="btn"
+    style="color: #ab36cf; background-color: #fff; border-color: #ab36cf;">
+  {% else %}
+    <input type="submit" value="follow"s tyle="margin:2rem 0;" class="btn"
+    style="color: #fff; background-color: #ab36cf; border-color: #ab36cf;">
+  {% endif %}
+</form>
+</div>
+{% endblock body %}

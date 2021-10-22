@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load bootstrap5 %}
+{% load humanize %}
+
+{% block body %}
+
+<div style="border:1px solid #ddd; border-radius:16px;">
+  <ul class="list-group list-group-flush" style="border-radius:16px;">
+    <li class="list-group-item">created_at : {{ review.created_at|naturaltime }}</li>
+    <li class="list-group-item">updated_at : {{ review.updated_at|naturaltime }}</li>
+  </ul>
+</div>
+
+<div style="border:1px solid #ddd; border-radius:16px; margin-top:2rem">
+  <ul class="list-group list-group-flush" style="border-radius:16px;">
+    <li class="list-group-item">title : {{ review.title }}</li>
+    <li class="list-group-item">movie_title : {{ review.movie_title }}</li>
+    <li class="list-group-item">content : {{ review.content }}</li>
+    <li class="list-group-item">rate : {{ review.get_rank_display }}</li>
+  </ul>
+</div>
+
+
+<p style="margin: 3rem 0;">
+  <form action="{% url 'community:likes' review.pk %}" method="POST" id="like-form-{{review.pk}}">
+    {% csrf_token %}
+  </form>
+  {% if user in review.like_users.all %}
+    <a href="#" onclick="document.querySelector('#like-form-{{review.pk}}').submit()"><i class="fas fa-heart" style="color: red"></i></a>
+  {% else %}
+    <a href="#" onclick="document.querySelector('#like-form-{{review.pk}}').submit()"><i class="far fa-heart" style="color: black"></i></a>
+  {% endif %}
+  {{ review.like_users.all|length }} 명이 게시물을 좋아합니다.
+</p>
+
+
+<p>댓글</p>
+<form action="{% url 'community:create_comment' review.pk %}" method="POST">
+  {% csrf_token %}
+  {% bootstrap_form form show_label=False%}
+  <input type="submit" class="btn btn-primary">
+</form>
+
+<p style="margin-top:2rem;">댓글 리스트</p>
+{% for comment in review.comment_set.all %}
+    <p style="border-bottom:1px solid #ddd; padding-bottom:0.5rem;">{{ comment.user }} : {{ comment.content }}</p>
+{% endfor %}
+
+{% endblock body %}

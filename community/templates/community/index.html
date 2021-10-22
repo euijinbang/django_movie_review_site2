@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load bootstrap5 %}
+
+{% block body %}
+  <div class="mt-3">
+  {% for review in reviews %}
+    <div style="margin-top: 1.5rem; font-size:20px; color:white; font-size:1rem; background-color:#666; padding:10px; border-radius:10px" class="d-flex align-items-center justify-content-center">
+      <p style="margin: 0 1rem">
+        {{ review.title }}
+      </p>
+      <p style="margin: 0 1rem"> 
+        {{ review.movie_title }}
+      </p>
+      <div style="margin: 0 3.5rem">
+        평점 : {{ review.get_rank_display }}
+      </div>
+      <div style="margin-left:3.5rem">
+        <a href="{% url 'community:detail' review.pk %}" class="btn btn-primary">자세히보기</a>
+      </div>
+    </div>
+  {% endfor %}
+  </div>
+{% endblock body %}
