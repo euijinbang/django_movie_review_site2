@@ -3,6 +3,7 @@
 https://user-images.githubusercontent.com/78768769/138486904-dabee15c-f424-4031-b6f7-1c8e1ca03b2e.mov
 
 > python venv/bin/activate
+
 > pip install -r requirements.txt
 
 # 구현의도
