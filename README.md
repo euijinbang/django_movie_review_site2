@@ -1,6 +1,6 @@
 
 
-https://user-images.githubusercontent.com/58986949/115314310-805b2780-a1a7-11eb-8558-648a367ea231.mp4
+https://user-images.githubusercontent.com/78768769/138486904-dabee15c-f424-4031-b6f7-1c8e1ca03b2e.mov
 
 > python venv/bin/activate
 > pip install -r requirements.txt
