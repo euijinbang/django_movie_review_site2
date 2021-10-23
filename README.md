@@ -176,7 +176,7 @@ def create_comment(request, pk):
         return redirect('community:detail', pk)
 ```
 
-- 이때, `POST` 요청만 받으며 빈 폼은 리다이렉트하는 경로에 보여야 하고, 포스트 요청이 들어오면 위의 과정을 수행한다. 
+- 이때, `GET` 요청만 받으며 빈 폼은 리다이렉트하는 경로에 보여야 하고, 포스트 요청이 들어오면 위의 과정을 수행한다. 
 
 ```python
 form = CommentForm() #=> detial view 
@@ -232,7 +232,7 @@ https://django-bootstrap-v5.readthedocs.io/en/latest/
 
 https://github.com/matthewwithanm/django-imagekit
 
-- 장고 시드 - 가라데이터 넣기
+- 장고 시드 - 가상데이터 넣기
 
 https://github.com/Brobin/django-seed
 
